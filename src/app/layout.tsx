@@ -6,31 +6,32 @@ import TopNavigation from "./_components/top-navigation";
 const yekanbakh = localFont({
   src: [
     {
-      path: "../../public/fonts/yekanbakh/YekanBakhFaNum-Light.woff2",
+      path: "../../public/fonts/IRANYekanWebLight.woff2",
       weight: "200",
       style: "normal",
     },
     {
-      path: "../../public/fonts/yekanbakh/YekanBakhFaNum-Regular.woff2",
+      path: "../../public/fonts/IRANYekanWebRegular.woff2",
       weight: "400",
       style: "normal",
     },
     {
-      path: "../../public/fonts/yekanbakh/YekanBakhFaNum-SemiBold.woff2",
+      path: "../../public/fonts/IRANYekanWebMedium.woff2",
       weight: "600",
       style: "normal",
     },
     {
-      path: "../../public/fonts/yekanbakh/YekanBakhFaNum-Bold.woff2",
+      path: "../../public/fonts/IRANYekanWebBold.woff2",
       weight: "700",
       style: "normal",
     },
     {
-      path: "../../public/fonts/yekanbakh/YekanBakhFaNum-Black.woff2",
+      path: "../../public/fonts/IRANYekanWebBlack.woff2",
       weight: "900",
       style: "normal",
     },
   ],
+
   variable: "--font-yekanbakh",
 });
 export default function RootLayout({

@@ -9,6 +9,7 @@ import { TextBox } from "@/app/_components/textbox";
 import { Button } from "@/app/_components/button";
 import Phone from "@/app/_assets/phone";
 import Eye from "@/app/_assets/eye";
+import { signinAction } from "@/app/_actions/auth-actions";
 
 export const SignInForm: FC = () => {
   const {
@@ -23,7 +24,7 @@ export const SignInForm: FC = () => {
 
   const onSubmit = async (data: SignInModel) => {
     startTransition(async () => {
-      // const response = await signInAction(data);
+      const response = await signinAction(data);
       console.log(data);
     });
   };
