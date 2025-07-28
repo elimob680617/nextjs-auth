@@ -1,6 +1,7 @@
 import Logo from "@/app/_assets/logo-horizontal.svg";
 import Image from "next/image";
 import Link from "next/link";
+import { TopNavigationAccount } from "@/app/_components/top-navigation-account";
 export default function TopNavigation() {
   return (
     <nav className="  sticky -top-1  backdrop-blur-md  z-20 border-b bg-secondary-870 border-secondary-870">
@@ -63,6 +64,7 @@ export default function TopNavigation() {
           </li>
         </ul>
       </div>
+      <TopNavigationAccount />
     </nav>
   );
 }

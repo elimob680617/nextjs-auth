@@ -5,6 +5,7 @@ import { headers, cookies } from "next/headers";
 import { JWT, UserResponse, UserSession } from "@/app/_types/auth.types";
 import { jwtDecode } from "jwt-decode";
 import { json } from "node:stream/consumers";
+import { decryptSession, encryptSession } from "@/app/utils/session";
 
 export async function signinAction(model: SignInModel) {
   const headerList = headers();
@@ -45,8 +46,15 @@ export async function setAuthCookieAction(user: UserResponse) {
     sessionExpiry: user.sessionExpiry,
   };
 
-  const cookieStore = new cookies();
-  cookieStore.set("clb-session", JSON.stringify(session), {
+  const cookieStore = await cookies();
+  const encryptedSession = await encryptSession(session);
+  const decryptedSession = await decryptSession(encryptedSession);
+  console.log("decryptedSession", decryptedSession);
+
+  cookieStore.set("clb-session", encryptedSession, {
     httpOnly: true,
+    secure: true,
+    sameSite: "strict",
+    path: "/",
   });
 }
