@@ -9,7 +9,7 @@ import { TextBox } from "@/app/_components/textbox";
 import { Button } from "@/app/_components/button";
 import Phone from "@/app/_assets/phone";
 import Eye from "@/app/_assets/eye";
-import { signinAction } from "@/app/_actions/auth-actions";
+import { signInAction } from "@/app/_actions/auth-actions";
 import { useSessionStore } from "@/app/_stores/auth.store";
 import { useRouter } from "next/navigation";
 
@@ -28,7 +28,7 @@ export const SignInForm: FC = () => {
 
   const onSubmit = async (data: SignInModel) => {
     startTransition(async () => {
-      const response = await signinAction(data);
+      const response = await signInAction(data);
       if (response.isSuccess) {
         await updateSession();
         router.push("/dashboard/courses");
