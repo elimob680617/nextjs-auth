@@ -1,5 +1,6 @@
 import { UserSession } from "@/app/_types/auth.types";
 import { EncryptJWT, jwtDecrypt, JWTPayload } from "jose";
+import { cookies } from "next/headers";
 
 // Decodes base64 to Uint8Array, as jose expects the raw key bytes:
 
@@ -15,4 +16,20 @@ export async function encryptSession(session: UserSession): Promise<string> {
 export async function decryptSession(session: string) {
   const { payload } = await jwtDecrypt(session, encodedKey);
   return payload as unknown as UserSession;
+}
+
+export async function getSession(): Promise<UserSession | null> {
+  const cookieStore = await cookies();
+  try {
+    const sessionCookie = cookieStore.get("clb-session")?.value;
+    if (!sessionCookie) {
+      return null;
+    }
+    const session = (await decryptSession(
+      sessionCookie,
+    )) as unknown as UserSession;
+    return session;
+  } catch {
+    return null;
+  }
 }

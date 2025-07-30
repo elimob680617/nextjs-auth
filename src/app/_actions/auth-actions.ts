@@ -56,7 +56,7 @@ export async function signOutAction() {
       },
     );
     if (response.ok) {
-      cookieStore.delete("clb.session");
+      cookieStore.delete("clb-session");
       return { isSuccess: true };
     }
   } catch {
