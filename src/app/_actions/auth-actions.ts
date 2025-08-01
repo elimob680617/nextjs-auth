@@ -76,7 +76,7 @@ export async function setAuthCookieAction(user: UserResponse) {
     exp: decoded.exp * 1000,
     accessToken: user.accessToken,
     sessionId: user.sessionId,
-    sessionExpiry: user.sessionExpiry,
+    sessionExpiry: user.sessionExpiry * 1000,
   };
 
   const cookieStore = await cookies();
