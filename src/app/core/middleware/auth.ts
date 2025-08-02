@@ -1,8 +1,8 @@
-import { NextRequest, NextResponse } from "next/server";
-import { decryptSession } from "@/app/utils/session";
-import { UserResponse, UserSession } from "@/app/_types/auth.types";
-import { cookies } from "next/headers";
 import { setAuthCookieAction } from "@/app/_actions/auth-actions";
+import { UserResponse, UserSession } from "@/app/_types/auth.types";
+import { decryptSession } from "@/app/utils/session";
+import { cookies } from "next/headers";
+import { NextRequest, NextResponse } from "next/server";
 
 export async function authMiddleware(request: NextRequest) {
   const session = request.cookies.get("clb-session")?.value;
